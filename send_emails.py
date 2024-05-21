@@ -35,6 +35,7 @@ data = sheet.get_all_records()
 SMTP_SERVER = 'smtp.gmail.com'
 SMTP_PORT = 587
 RESUME_PATH = os.getenv('RESUME_PATH')
+SAMPLE_WORK = os.getenv('SAMPLE_WORK')
 
 def send_email(to_email, role, company, code):
     subject = f"Interested in {role} role at {company} - Job Bank Invite Code: {code}"
@@ -68,6 +69,12 @@ def send_email(to_email, role, company, code):
     with open(RESUME_PATH, 'rb') as attachment:
         part = MIMEApplication(attachment.read(), Name='Resume-Himanshu Kumar.pdf')
         part['Content-Disposition'] = 'attachment; filename="Resume-Himanshu Kumar.pdf"'
+        msg.attach(part)
+    
+      # Attach the sample work
+    with open(SAMPLE_WORK, 'rb') as attachment:
+        part = MIMEApplication(attachment.read(), Name='Sample Work-Himanshu Kumar.pdf')
+        part['Content-Disposition'] = 'attachment; filename="Sample Work-Himanshu Kumar.pdf"'
         msg.attach(part)
 
     # Connect to the server

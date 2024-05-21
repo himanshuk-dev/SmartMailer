@@ -3,6 +3,12 @@
 
 SmartMailer is an automated email sending tool designed to streamline the process of applying to job positions. It reads recipient details from a Google Sheet, customizes each email with specific details such as the job role, company name, and job invite code, and sends the emails individually. The emails are personalized with a tailored subject line and body content, and each email includes an attachment of the sender's resume.
 
+
+
+https://github.com/himanshuk-dev/SmartMailer/assets/87880250/c25703ea-4a54-4526-826d-621957de14b9
+
+
+
 ## Features
 
 - Read recipient details from a Google Sheet

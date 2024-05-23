@@ -46,9 +46,9 @@ def send_email(to_email, role, company, code):
 
     After closely reviewing the role's specifics, I am genuinely excited about bringing my strengths in Software development, website architecture, software development strategy, and database design to your team.
 
-    Please find my Resume attached for your detailed review.
+    Please find my Resume and sample work attached for your detailed review.
 
-    [Demo] Direct link to my sample work: https://himanshu.dev/projects/remplr
+    [Demo] Direct link to my work sample: https://himanshu.dev/projects/remplr
 
     Should you need any additional information or wish to discuss my experience further, please don't hesitate to contact me via this email. I look forward to hearing from you.
 
@@ -73,8 +73,8 @@ def send_email(to_email, role, company, code):
     
       # Attach the sample work
     with open(SAMPLE_WORK, 'rb') as attachment:
-        part = MIMEApplication(attachment.read(), Name='Sample Work-Himanshu Kumar.pdf')
-        part['Content-Disposition'] = 'attachment; filename="Sample Work-Himanshu Kumar.pdf"'
+        part = MIMEApplication(attachment.read(), Name='Work Sample-Himanshu Kumar.pdf')
+        part['Content-Disposition'] = 'attachment; filename="Work Sample-Himanshu Kumar.pdf"'
         msg.attach(part)
 
     # Connect to the server

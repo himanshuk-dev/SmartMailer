@@ -35,14 +35,18 @@ data = sheet.get_all_records()
 SMTP_SERVER = 'smtp.gmail.com'
 SMTP_PORT = 587
 RESUME_PATH = os.getenv('RESUME_PATH')
+COVER_LETTER_PATH = os.getenv('COVER_LETTER_PATH')
 SAMPLE_WORK = os.getenv('SAMPLE_WORK')
 
 def send_email(to_email, role, company, code):
-    subject = f"Interested in {role} role at {company} - Job Bank Invite Code: {code}"
+    
+    
+    # NOTE: Use without Invite Code
+    subject = f"Interested in {role} role at {company}"
     body = f"""
     Dear Hiring Manager,
 
-    I hope you're doing well. I'm Himanshu Kumar.  I am writing in response to your invitation to apply for the {role} role at {company} as posted on Job Bank (Job Bank invite code: {code}).
+    I hope you're doing well. I'm Himanshu Kumar.  I am writing in response to your invitation to apply for the {role} role at {company} as posted on Job Bank.
 
     After closely reviewing the role's specifics, I am genuinely excited about bringing my strengths in Software development, website architecture, software development strategy, and database design to your team.
 
@@ -55,6 +59,25 @@ def send_email(to_email, role, company, code):
     Best,
     Himanshu Kumar
     """
+    
+    # NOTE: Use when Invite Code
+    # subject = f"Interested in {role} role at {company} - Job Bank Invite Code: {code}"
+    # body = f"""
+    # Dear Hiring Manager,
+
+    # I hope you're doing well. I'm Himanshu Kumar.  I am writing in response to your invitation to apply for the {role} role at {company} as posted on Job Bank (Job Bank invite code: {code}).
+
+    # After closely reviewing the role's specifics, I am genuinely excited about bringing my strengths in Software development, website architecture, software development strategy, and database design to your team.
+
+    # Please find my Resume and sample work attached for your detailed review.
+
+    # [Demo] Direct link to my work sample: https://himanshu.dev/projects/remplr
+
+    # Should you need any additional information or wish to discuss my experience further, please don't hesitate to contact me via this email. I look forward to hearing from you.
+
+    # Best,
+    # Himanshu Kumar
+    # """
 
     # Create the email
     msg = MIMEMultipart()
@@ -71,7 +94,13 @@ def send_email(to_email, role, company, code):
         part['Content-Disposition'] = 'attachment; filename="Resume-Himanshu Kumar.pdf"'
         msg.attach(part)
     
-      # Attach the sample work
+    # Attach the generic cover letter
+    with open(COVER_LETTER_PATH, 'rb') as attachment:
+        part = MIMEApplication(attachment.read(), Name='Cover Letter-Himanshu Kumar.pdf')
+        part['Content-Disposition'] = 'attachment; filename="Cover Letter-Himanshu Kumar.pdf"'
+        msg.attach(part)
+    
+    # Attach the sample work
     with open(SAMPLE_WORK, 'rb') as attachment:
         part = MIMEApplication(attachment.read(), Name='Work Sample-Himanshu Kumar.pdf')
         part['Content-Disposition'] = 'attachment; filename="Work Sample-Himanshu Kumar.pdf"'

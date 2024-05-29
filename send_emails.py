@@ -46,7 +46,7 @@ def send_email(to_email, role, company, code):
     body = f"""
     Dear Hiring Manager,
 
-    I hope you're doing well. I'm Himanshu Kumar.  I am writing in response to your invitation to apply for the {role} role at {company} as posted on Job Bank.
+    I hope you're doing well. I'm Himanshu Kumar. I am writing to express my interest in the {role} role at {company} as posted on Job Bank.
 
     After closely reviewing the role's specifics, I am genuinely excited about bringing my strengths in Software development, website architecture, software development strategy, and database design to your team.
 
@@ -65,7 +65,7 @@ def send_email(to_email, role, company, code):
     # body = f"""
     # Dear Hiring Manager,
 
-    # I hope you're doing well. I'm Himanshu Kumar.  I am writing in response to your invitation to apply for the {role} role at {company} as posted on Job Bank (Job Bank invite code: {code}).
+    # I hope you're doing well. I'm Himanshu Kumar. I am writing in response to your invitation to apply for the {role} role at {company} as posted on Job Bank (Job Bank invite code: {code}).
 
     # After closely reviewing the role's specifics, I am genuinely excited about bringing my strengths in Software development, website architecture, software development strategy, and database design to your team.
 

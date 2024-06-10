@@ -44,40 +44,40 @@ def send_email(to_email, role, company, code):
     # NOTE: Use without Invite Code
     subject = f"Interested in {role} role at {company}"
     body = f"""
-    Dear Hiring Manager,
+Dear Hiring Manager,
 
-    I hope you're doing well. I'm Himanshu Kumar. I am writing to express my interest in the {role} role at {company} as posted on Job Bank.
+I hope you're doing well. I'm Himanshu Kumar. I am writing to express my interest in the {role} role at {company} as posted on Job Bank.
 
-    After closely reviewing the role's specifics, I am genuinely excited about bringing my strengths in Software development, website architecture, software development strategy, and database design to your team.
+After closely reviewing the role's specifics, I am genuinely excited about bringing my strengths in Software development, website architecture, software development strategy, and database design to your team.
 
-    Please find my Resume and sample work attached for your detailed review.
+Please find my Resume, Cover letter and sample work attached for your detailed review.
 
-    [Demo] Direct link to my work sample: https://himanshu.dev/projects/remplr
+[Demo] Direct link to my work sample: https://himanshu.dev/projects/remplr
 
-    Should you need any additional information or wish to discuss my experience further, please don't hesitate to contact me via this email. I look forward to hearing from you.
+Should you need any additional information or wish to discuss my experience further, please don't hesitate to contact me via this email. I look forward to hearing from you.
 
-    Best,
-    Himanshu Kumar
-    """
+Best,
+Himanshu Kumar
+"""
     
     # NOTE: Use when Invite Code
-    # subject = f"Interested in {role} role at {company} - Job Bank Invite Code: {code}"
-    # body = f"""
-    # Dear Hiring Manager,
+    subject = f"Interested in {role} role at {company} - Job Bank Invite Code: {code}"
+    body = f"""
+Dear Hiring Manager,
 
-    # I hope you're doing well. I'm Himanshu Kumar. I am writing in response to your invitation to apply for the {role} role at {company} as posted on Job Bank (Job Bank invite code: {code}).
+I hope you're doing well. I'm Himanshu Kumar. I am writing in response to your invitation to apply for the {role} role at {company} as posted on Job Bank (Job Bank invite code: {code}).
 
-    # After closely reviewing the role's specifics, I am genuinely excited about bringing my strengths in Software development, website architecture, software development strategy, and database design to your team.
+After closely reviewing the role's specifics, I am genuinely excited about bringing my strengths in Software development, website architecture, software development strategy, and database design to your team.
 
-    # Please find my Resume and sample work attached for your detailed review.
+Please find my Resume, Cover letter and sample work attached for your detailed review.
 
-    # [Demo] Direct link to my work sample: https://himanshu.dev/projects/remplr
+[Demo] Direct link to my work sample: https://himanshu.dev/projects/remplr
 
-    # Should you need any additional information or wish to discuss my experience further, please don't hesitate to contact me via this email. I look forward to hearing from you.
+Should you need any additional information or wish to discuss my experience further, please don't hesitate to contact me via this email. I look forward to hearing from you.
 
-    # Best,
-    # Himanshu Kumar
-    # """
+Best,
+Himanshu Kumar
+"""
 
     # Create the email
     msg = MIMEMultipart()

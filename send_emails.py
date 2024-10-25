@@ -30,6 +30,8 @@ sheet = client.open(os.getenv('GOOGLE_SHEET')).sheet1
 
 # Fetch all data from the sheet
 data = sheet.get_all_records()
+print("Data retrieved:", data)
+
 
 # Email setup
 SMTP_SERVER = 'smtp.gmail.com'
@@ -39,26 +41,27 @@ COVER_LETTER_PATH = os.getenv('COVER_LETTER_PATH')
 SAMPLE_WORK = os.getenv('SAMPLE_WORK')
 
 def send_email(to_email, role, company, code):
+    print(f"Sending email to: {to_email} for role: {role} at company: {company}")
+
     
-    
-    # NOTE: Use without Invite Code
-    subject = f"Interested in {role} role at {company}"
-    body = f"""
-Dear Hiring Manager,
+#     # NOTE: Use without Invite Code
+#     subject = f"Interested in {role} role at {company}"
+#     body = f"""
+# Dear Hiring Manager,
 
-I hope you're doing well. I'm Himanshu Kumar. I am writing to express my interest in the {role} role at {company} as posted on Job Bank.
+# I hope you're doing well. I'm Himanshu Kumar. I am writing to express my interest in the {role} role at {company} as posted on Job Bank.
 
-After closely reviewing the role's specifics, I am genuinely excited about bringing my strengths in Software development, website architecture, software development strategy, and database design to your team.
+# After closely reviewing the role's specifics, I am genuinely excited about bringing my strengths in Software development, website architecture, software development strategy, and database design to your team.
 
-Please find my Resume, Cover letter and sample work attached for your detailed review.
+# Please find my Resume, Cover letter and sample work attached for your detailed review.
 
-[Demo] Direct link to my work sample: https://himanshu.dev/projects/remplr
+# [Demo] Direct link to my work sample: https://himanshu.dev/projects/remplr
 
-Should you need any additional information or wish to discuss my experience further, please don't hesitate to contact me via this email. I look forward to hearing from you.
+# Should you need any additional information or wish to discuss my experience further, please don't hesitate to contact me via this email. I look forward to hearing from you.
 
-Best,
-Himanshu Kumar
-"""
+# Best,
+# Himanshu Kumar
+# """
     
     # NOTE: Use when Invite Code
     subject = f"Interested in {role} role at {company} - Job Bank Invite Code: {code}"
@@ -107,18 +110,22 @@ Himanshu Kumar
         msg.attach(part)
 
     # Connect to the server
-    server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
-    server.starttls()
-    server.login(SENDER_EMAIL, SENDER_PASSWORD)
+    try:
+        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+        server.starttls()
+        server.login(SENDER_EMAIL, SENDER_PASSWORD)
+        server.sendmail(SENDER_EMAIL, to_email, msg.as_string())
+        print("Email sent to", to_email)
+    except Exception as e:
+        print("Error sending email:", e)
+    finally:
+        server.quit()
 
-    # Send the email
-    server.sendmail(SENDER_EMAIL, to_email, msg.as_string())
-
-    # Disconnect from the server
-    server.quit()
 
 # Iterate over each record and send emails
 for record in data:
+    print("Processing record:", record)
     send_email(record['Email'], record['ROLE'], record['COMPANY'], record['CODE'])
+
 
 print("Emails sent successfully!")
